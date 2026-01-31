@@ -1,5 +1,7 @@
 # cursorSkillTest
 
+> **New here?** See [USER_README.md](USER_README.md) for the recommended workflow and setup instructions.
+
 This workspace documents the MCP servers, tools, and agent skills available in this Cursor environment.
 
 ---
