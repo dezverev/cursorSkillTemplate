@@ -38,15 +38,15 @@ mv .workplans/Pending/issue-{number}-*.md .workplans/Inprogress/
 
 ### Step 3: Set GitHub Issue to INPROGRESS
 
-```
-issue_write:
-  owner: {owner}
-  repo: {repo}
-  issue_number: {number}
-  labels: [...existing, "INPROGRESS"]
-```
+Use `gh issue edit` to update labels:
 
-Remove `PLANCREATED` label if present.
+```bash
+# Add INPROGRESS label
+gh issue edit {number} --repo {owner}/{repo} --add-label "INPROGRESS"
+
+# Remove PLANCREATED label if present
+gh issue edit {number} --repo {owner}/{repo} --remove-label "PLANCREATED"
+```
 
 ### Step 4: Verify Documentation
 
@@ -135,27 +135,21 @@ git commit -m "feat(#{number}): complete {short_description}
 
 ```bash
 git push -u origin HEAD
-gh pr create --title "feat(#{number}): {title}" --body "$(cat <<'EOF'
-## Summary
+gh pr create --title "feat(#{number}): {title}" --body "## Summary
 {summary_of_changes}
 
 ## Test Plan
 - {test_details}
 
-Closes #{number}
-EOF
-)"
+Closes #{number}"
 ```
 
-### Step 11: Set GitHub Issue to Complete
+### Step 11: Close GitHub Issue
 
-```
-issue_write:
-  owner: {owner}
-  repo: {repo}
-  issue_number: {number}
-  state: "closed"
-  state_reason: "completed"
+Use `gh issue close` to mark the issue as completed:
+
+```bash
+gh issue close {number} --repo {owner}/{repo} --reason completed
 ```
 
 ---
@@ -171,16 +165,20 @@ If the issue is too large or you are interrupted:
    ```
 
 2. **Create continuation issue:**
-   ```
-   issue_write:
-     owner: {owner}
-     repo: {repo}
-     title: "CONT: {original_title} (continued from #{number})"
-     body: "Continuation of #{number}\n\n## Remaining Work\n{remaining_steps}"
-     labels: ["CONT"]
+   ```bash
+   gh issue create --repo {owner}/{repo} \
+     --title "CONT: {original_title} (continued from #{number})" \
+     --body "Continuation of #{number}
+
+## Remaining Work
+{remaining_steps}" \
+     --label "CONT"
    ```
 
-3. **Update original issue** with reference to continuation
+3. **Update original issue** with reference to continuation:
+   ```bash
+   gh issue comment {number} --repo {owner}/{repo} --body "Work continued in #{new_issue_number}"
+   ```
 
 4. **Leave workplan in Inprogress** with notes on what remains
 
