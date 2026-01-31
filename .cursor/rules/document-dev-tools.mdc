@@ -1,0 +1,25 @@
+---
+description: Triggers documentation of MCP servers, tools, skills, and agents
+alwaysApply: true
+---
+
+# Document Development Tools
+
+When any of these scenarios occur, use the `document-dev-tools` skill:
+
+## Trigger Scenarios
+
+- User adds, removes, or modifies MCP servers
+- User creates, updates, or removes skills
+- User asks about available tools, MCPs, or capabilities
+- User requests to update or generate `DEVELOPMENTTOOLS.md`
+- User sets up a new development environment
+
+## Action
+
+1. Read and follow `.cursor/skills/document-dev-tools/SKILL.md`
+2. Update `.cursor/DEVELOPMENTTOOLS.md` with current state
+
+## Keywords
+
+Listen for: "MCP", "tools", "skills", "agents", "capabilities", "what can you do", "DEVELOPMENTTOOLS"

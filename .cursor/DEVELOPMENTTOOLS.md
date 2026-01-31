@@ -1,12 +1,13 @@
-# cursorSkillTest
+# Development Tools
 
-This workspace documents the MCP servers, tools, and agent skills available in this Cursor environment.
+> Auto-generated documentation of available MCP servers, tools, skills, and agents.
+> Last updated: 2026-01-31
 
 ---
 
 ## MCP Servers & Tools
 
-### 1. user-memory
+### user-memory
 Knowledge graph server for persistent memory and entity management.
 
 | Tool | Description |
@@ -23,7 +24,7 @@ Knowledge graph server for persistent memory and entity management.
 
 ---
 
-### 2. user-sequential-thinking
+### user-sequential-thinking
 Structured reasoning server for complex problem-solving.
 
 | Tool | Description |
@@ -32,7 +33,7 @@ Structured reasoning server for complex problem-solving.
 
 ---
 
-### 3. user-context7
+### user-context7
 Documentation retrieval server for up-to-date library documentation.
 
 | Tool | Description |
@@ -40,11 +41,9 @@ Documentation retrieval server for up-to-date library documentation.
 | `resolve-library-id` | Resolve a library name to its Context7 ID |
 | `query-docs` | Query documentation for a specific library |
 
-**Usage**: Use this server to retrieve up-to-date documentation and code examples for any library.
-
 ---
 
-### 4. user-github
+### user-github
 GitHub platform integration for repository and issue management.
 
 #### Repository Operations
@@ -109,19 +108,15 @@ GitHub platform integration for repository and issue management.
 | `get_teams` | Get teams |
 | `get_team_members` | Get team members |
 
-#### Labels
+#### Other
 | Tool | Description |
 |------|-------------|
 | `get_label` | Get label details |
-
-#### Code Search
-| Tool | Description |
-|------|-------------|
 | `search_code` | Search code in repositories |
 
 ---
 
-### 5. cursor-ide-browser
+### cursor-ide-browser
 IDE-integrated browser for frontend development and testing.
 
 | Tool | Description |
@@ -158,85 +153,55 @@ IDE-integrated browser for frontend development and testing.
 | `browser_is_enabled` | Check if element is enabled |
 | `browser_is_checked` | Check checkbox/radio state |
 
-**Important**: Use `browser_lock` after navigating before any interactions, and `browser_unlock` when completely done.
-
 ---
 
 ## Agent Skills
 
-Skills provide specialized capabilities and domain knowledge that the agent can apply when relevant.
-
-### 1. create-rule
-
-**Purpose**: Create Cursor rules for persistent AI guidance.
-
-**Trigger Scenarios**:
-- User wants to create a rule
-- Add coding standards
-- Set up project conventions
-- Configure file-specific patterns
-- Create `.cursor/rules/` files
-
-**Details**:
-- Rules are `.mdc` files stored in `.cursor/rules/`
-- Support `alwaysApply: true` for universal rules
-- Support `globs` patterns for file-specific rules
-- Should be kept under 50 lines with concrete examples
+### create-rule
+**Description**: Create Cursor rules for persistent AI guidance.
+**Triggers**: Creating rules, adding coding standards, setting up project conventions, configuring file-specific patterns, creating `.cursor/rules/` files.
 
 ---
 
-### 2. create-skill
-
-**Purpose**: Guide users through creating effective Agent Skills for Cursor.
-
-**Trigger Scenarios**:
-- User wants to create, write, or author a new skill
-- Questions about skill structure or best practices
-- Working with `SKILL.md` format
-
-**Details**:
-- Skills are directories containing a `SKILL.md` file
-- Personal skills: `~/.cursor/skills/skill-name/`
-- Project skills: `.cursor/skills/skill-name/`
-- SKILL.md should be under 500 lines
-- Supports progressive disclosure with reference files
+### create-skill
+**Description**: Guide users through creating effective Agent Skills for Cursor.
+**Triggers**: Creating, writing, or authoring new skills, questions about skill structure, best practices, or SKILL.md format.
 
 ---
 
-### 3. update-cursor-settings
+### update-cursor-settings
+**Description**: Modify Cursor/VSCode user settings in settings.json.
+**Triggers**: Changing editor settings, preferences, configuration, themes, font size, tab size, format on save, auto save, keybindings.
 
-**Purpose**: Modify Cursor/VSCode user settings in `settings.json`.
+---
 
-**Trigger Scenarios**:
-- Change editor settings or preferences
-- Modify themes, font size, tab size
-- Configure format on save, auto save
-- Update keybindings
+### document-dev-tools
+**Description**: Documents available MCP servers, tools, skills, and agents into DEVELOPMENTTOOLS.md.
+**Triggers**: New MCP servers/tools added, skills/agents created or modified, user requests tool documentation, setting up development environment.
 
-**Settings File Locations**:
-| OS | Path |
-|----|------|
-| macOS | `~/Library/Application Support/Cursor/User/settings.json` |
-| Linux | `~/.config/Cursor/User/settings.json` |
-| Windows | `%APPDATA%\Cursor\User\settings.json` |
+---
 
-**Common Settings**:
-- `editor.fontSize` - Font size
-- `editor.tabSize` - Tab width
-- `editor.formatOnSave` - Format on save
-- `editor.wordWrap` - Word wrap
-- `workbench.colorTheme` - Color theme
-- `files.autoSave` - Auto save
+### create-project
+**Description**: Creates new projects and features following repository structure conventions.
+**Triggers**: Creating a new project, adding a new feature, scaffolding code, initializing a new module.
+
+---
+
+## Available Agents
+
+| Agent Type | Purpose | Best For |
+|------------|---------|----------|
+| `generalPurpose` | Research and multi-step tasks | Complex questions, code search, multi-step workflows |
+| `explore` | Fast codebase exploration | Finding files by patterns, searching code for keywords, answering codebase questions |
+| `shell` | Command execution specialist | Git operations, running bash commands, terminal tasks |
 
 ---
 
 ## Quick Reference
 
-| Category | Count | Server/Skill |
-|----------|-------|--------------|
-| Knowledge Graph | 9 tools | user-memory |
-| Sequential Reasoning | 1 tool | user-sequential-thinking |
-| Documentation | 2 tools | user-context7 |
-| GitHub Integration | 39 tools | user-github |
-| IDE Browser | 30 tools | cursor-ide-browser |
-| Agent Skills | 3 skills | create-rule, create-skill, update-cursor-settings |
+| Category | Count |
+|----------|-------|
+| MCP Servers | 5 |
+| MCP Tools | 81 |
+| Agent Skills | 5 |
+| Agent Types | 3 |

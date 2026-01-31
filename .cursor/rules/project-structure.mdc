@@ -1,0 +1,52 @@
+---
+description: Project structure conventions for source and test files
+alwaysApply: true
+---
+
+# Project Structure
+
+## Directory Layout
+
+```
+src/
+├── dev/      # Main source files (production code)
+└── test/     # Test files and test applications
+```
+
+## Guidelines
+
+### `src/dev/` - Source Files
+Place all main application code here:
+- Application logic
+- Components and modules
+- Utilities and helpers
+- Configuration files
+- Build scripts
+
+### `src/test/` - Test Files
+Place all testing-related files here:
+- Unit tests
+- Integration tests
+- Test applications
+- Test utilities and mocks
+- Test fixtures and data
+
+## Examples
+
+```
+# ✅ GOOD
+src/dev/app.ts
+src/dev/utils/helpers.ts
+src/test/app.test.ts
+src/test/utils/helpers.test.ts
+
+# ❌ BAD
+src/app.ts
+src/app.test.ts
+tests/app.test.ts
+```
+
+## When Creating Files
+
+- New feature → `src/dev/`
+- Test for that feature → `src/test/` (mirror the path structure)
