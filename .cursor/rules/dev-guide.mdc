@@ -9,7 +9,7 @@ alwaysApply: true
 
 All code follows this layout:
 - `src/dev/` - Source files (production code)
-- `src/test/` - Test files (mirror structure from dev)
+- `src/Tests/` - Test files (mirror structure from dev)
 
 Use the `create-project` skill when scaffolding new features.
 

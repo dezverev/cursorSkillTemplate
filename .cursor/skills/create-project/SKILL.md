@@ -14,7 +14,7 @@ All code must follow this layout:
 ```
 src/
 ├── dev/      # Source files (production code)
-└── test/     # Test files and test applications
+└── Tests/    # Test files and test applications
 ```
 
 ## Workflow
@@ -32,7 +32,7 @@ For a new project/feature named `{name}`:
 
 ```
 src/dev/{name}/
-src/test/{name}/
+src/Tests/{name}/
 ```
 
 ### Step 3: Create Files Based on Request
@@ -43,9 +43,9 @@ src/test/{name}/
 
 | Language | Source File | Test File |
 |----------|-------------|-----------|
-| TypeScript | `src/dev/{name}/index.ts` | `src/test/{name}/index.test.ts` |
-| JavaScript | `src/dev/{name}/index.js` | `src/test/{name}/index.test.js` |
-| Python | `src/dev/{name}/__init__.py` | `src/test/{name}/test_{name}.py` |
+| TypeScript | `src/dev/{name}/index.ts` | `src/Tests/{name}/index.test.ts` |
+| JavaScript | `src/dev/{name}/index.js` | `src/Tests/{name}/index.test.js` |
+| Python | `src/dev/{name}/__init__.py` | `src/Tests/{name}/test_{name}.py` |
 
 ### Step 4: Mirror Structure
 
@@ -56,7 +56,7 @@ Tests must mirror the source structure:
 src/dev/myfeature/utils/helpers.ts
 
 # Corresponding test
-src/test/myfeature/utils/helpers.test.ts
+src/Tests/myfeature/utils/helpers.test.ts
 ```
 
 ## Examples
@@ -72,7 +72,7 @@ src/dev/auth/
 ├── types.ts
 └── utils.ts
 
-src/test/auth/
+src/Tests/auth/
 ├── index.test.ts
 └── utils.test.ts
 ```
@@ -88,7 +88,7 @@ src/dev/data-processor/
 ├── processor.py
 └── utils.py
 
-src/test/data-processor/
+src/Tests/data-processor/
 ├── test_processor.py
 └── test_utils.py
 ```
@@ -102,13 +102,13 @@ src/test/data-processor/
 src/dev/auth/validation/
 └── index.ts
 
-src/test/auth/validation/
+src/Tests/auth/validation/
 └── index.test.ts
 ```
 
 ## Rules
 
 1. **Never** place source files directly in `src/`
-2. **Never** place tests outside `src/test/`
+2. **Never** place tests outside `src/Tests/`
 3. **Always** mirror paths between dev and test
 4. **Always** use lowercase with hyphens for directory names

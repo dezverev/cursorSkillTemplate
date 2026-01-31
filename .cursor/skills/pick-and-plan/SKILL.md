@@ -5,7 +5,7 @@ description: Picks an open GitHub issue by priority and creates an execution pla
 
 # Pick and Plan
 
-Selects a prioritized GitHub issue and creates an execution plan using the `user-github` MCP server.
+Selects a prioritized GitHub issue and creates an execution plan using GitHub CLI.
 
 ## Workflow
 
@@ -20,11 +20,10 @@ git remote get-url origin
 
 ### Step 2: Fetch Open Issues
 
-Use `list_issues` or `search_issues` to get open issues:
+Use GitHub CLI to list open issues:
 
-```
-search_issues:
-  query: "repo:{owner}/{repo} is:issue is:open"
+```bash
+gh issue list --state open --json number,title,labels,body,createdAt,url
 ```
 
 ### Step 3: Filter Issues
@@ -115,14 +114,14 @@ create_relations → Link to related concepts
 
 ### Step 6: Update Issue
 
-Use `issue_write` to update the issue body:
+Use GitHub CLI to update the issue body:
 
-```
-issue_write:
-  owner: {owner}
-  repo: {repo}
-  issue_number: {number}
-  body: "{original_body}\n\n---\n\n{plan}"
+```bash
+gh issue edit {number} --body "{original_body}
+
+---
+
+{plan}"
 ```
 
 ### Step 7: Check Branch
@@ -178,14 +177,10 @@ git commit -m "plan(#{number}): add execution plan for {short_title}"
 
 ### Step 10: Add Label
 
-Use `issue_write` to add the `PLANCREATED` label:
+Use GitHub CLI to add the `PLANCREATED` label:
 
-```
-issue_write:
-  owner: {owner}
-  repo: {repo}
-  issue_number: {number}
-  labels: [existing_labels..., "PLANCREATED"]
+```bash
+gh issue edit {number} --add-label "PLANCREATED"
 ```
 
 ## Output

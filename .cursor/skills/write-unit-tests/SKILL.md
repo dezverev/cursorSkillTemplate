@@ -5,7 +5,7 @@ description: Writes comprehensive unit tests using xUnit and Moq. Use when the u
 
 # Write Unit Tests
 
-Creates comprehensive unit tests in the `unitTests` project using xUnit and Moq for mocking.
+Creates comprehensive unit tests in `src/Tests` using xUnit and Moq for mocking.
 
 ## Core Principles
 
@@ -27,21 +27,21 @@ Creates comprehensive unit tests in the `unitTests` project using xUnit and Moq 
 
 ### Step 1: Create/Verify Test Project
 
-If `unitTests` project doesn't exist:
+If `src/Tests` project doesn't exist:
 
 ```bash
-dotnet new xunit -n unitTests -o unitTests
-cd unitTests
+dotnet new xunit -n Tests -o src/Tests
+cd src/Tests
 dotnet add package Moq
 dotnet add package FluentAssertions  # Optional but recommended
-dotnet add reference ../src/dev/{ProjectName}
+dotnet add reference ../dev/{ProjectName}
 ```
 
 ### Step 2: Project Structure
 
 ```
-unitTests/
-├── unitTests.csproj
+src/Tests/
+├── Tests.csproj
 ├── {Feature}/
 │   ├── {Class}Tests.cs
 │   └── {Class}MockSetup.cs  # If complex mocking needed
@@ -215,12 +215,12 @@ query-docs → Get xUnit/Moq best practices if needed
 ### Step 3: Write Tests
 
 Create test file mirroring source structure:
-- `src/dev/Services/UserService.cs` → `unitTests/Services/UserServiceTests.cs`
+- `src/dev/Services/UserService.cs` → `src/Tests/Services/UserServiceTests.cs`
 
 ### Step 4: Run and Verify
 
 ```bash
-dotnet test unitTests/
+dotnet test src/Tests/
 ```
 
 ### Step 5: Fix Failures Properly

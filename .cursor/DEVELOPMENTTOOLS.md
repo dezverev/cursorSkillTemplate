@@ -1,240 +1,178 @@
 # Development Tools
 
 > Auto-generated documentation of available MCP servers, tools, skills, and agents.
-> Last updated: 2026-01-31
+> Last updated: 2026-01-30
 
 ---
 
 ## MCP Servers & Tools
 
-### user-memory
-Knowledge graph server for persistent memory and entity management.
+### cursor-ide-browser
+
+Browser automation for frontend/webapp development and testing. Navigate, interact, and verify UI changes directly in the browser.
+
+**Important**: Lock/unlock workflow requires `browser_navigate` first, then `browser_lock` before interactions.
 
 | Tool | Description |
 |------|-------------|
-| `create_entities` | Create new entities in the graph |
-| `create_relations` | Create relationships between entities |
-| `add_observations` | Add observations to entities |
-| `read_graph` | Read the entire knowledge graph |
-| `search_nodes` | Search for nodes in the graph |
-| `open_nodes` | Open specific nodes by name |
-| `delete_entities` | Delete entities from the graph |
-| `delete_relations` | Delete relationships |
-| `delete_observations` | Delete observations |
-
----
-
-### user-sequential-thinking
-Structured reasoning server for complex problem-solving.
-
-| Tool | Description |
-|------|-------------|
-| `sequentialthinking` | Break down complex problems into sequential reasoning steps |
+| `browser_click` | Perform click on a web page (single/double, buttons, modifiers) |
+| `browser_console_messages` | Get console messages from the page |
+| `browser_drag` | Drag elements on the page |
+| `browser_fill` | Clear and replace input field content atomically |
+| `browser_fill_form` | Fill multiple form fields at once |
+| `browser_get_attribute` | Get an attribute value from an element |
+| `browser_get_bounding_box` | Get element position and dimensions |
+| `browser_get_input_value` | Get current value of an input element |
+| `browser_handle_dialog` | Handle native dialogs (alert/confirm/prompt) |
+| `browser_highlight` | Highlight elements on the page |
+| `browser_hover` | Hover over an element |
+| `browser_is_checked` | Check if checkbox/radio is checked |
+| `browser_is_enabled` | Check if element is enabled |
+| `browser_is_visible` | Check if element is visible |
+| `browser_lock` | Lock browser to prevent user interaction during automation |
+| `browser_navigate` | Navigate to a URL (reuse tab or open new) |
+| `browser_navigate_back` | Go back in browser history |
+| `browser_navigate_forward` | Go forward in browser history |
+| `browser_network_requests` | Get network requests from the page |
+| `browser_press_key` | Press keyboard keys |
+| `browser_reload` | Reload the current page |
+| `browser_resize` | Resize the browser viewport |
+| `browser_scroll` | Scroll the page or element |
+| `browser_search` | Search for text on the page |
+| `browser_select_option` | Select option from dropdown |
+| `browser_snapshot` | Capture accessibility snapshot (better than screenshot for actions) |
+| `browser_tabs` | List, create, close, or select browser tabs |
+| `browser_take_screenshot` | Take visual screenshot of the page |
+| `browser_type` | Type text into editable element (appends by default) |
+| `browser_unlock` | Release browser lock when done |
+| `browser_wait_for` | Wait for element or condition |
 
 ---
 
 ### user-context7
-Documentation retrieval server for up-to-date library documentation.
+
+Fetch up-to-date documentation and code examples for any library. Use before implementing features with external libraries.
 
 | Tool | Description |
 |------|-------------|
-| `resolve-library-id` | Resolve a library name to its Context7 ID |
-| `query-docs` | Query documentation for a specific library |
+| `resolve-library-id` | Resolve package name to Context7-compatible library ID |
+| `query-docs` | Retrieve documentation and examples for a library |
 
 ---
 
-### user-github
-GitHub platform integration for repository and issue management.
+### user-memory
 
-#### Repository Operations
+Persistent knowledge graph for storing and retrieving context across sessions.
+
 | Tool | Description |
 |------|-------------|
-| `create_repository` | Create a new repository |
-| `fork_repository` | Fork a repository |
-| `search_repositories` | Search for repositories |
-| `get_file_contents` | Get file contents from a repo |
-| `create_or_update_file` | Create or update a file |
-| `delete_file` | Delete a file |
-| `push_files` | Push multiple files |
-
-#### Branch & Tag Operations
-| Tool | Description |
-|------|-------------|
-| `create_branch` | Create a new branch |
-| `list_branches` | List all branches |
-| `list_commits` | List commits |
-| `get_commit` | Get commit details |
-| `list_tags` | List tags |
-| `get_tag` | Get tag details |
-
-#### Issues
-| Tool | Description |
-|------|-------------|
-| `issue_read` | Read issue details |
-| `issue_write` | Create/update issues |
-| `list_issues` | List issues |
-| `search_issues` | Search issues |
-| `add_issue_comment` | Add comment to issue |
-| `list_issue_types` | List issue types |
-| `sub_issue_write` | Manage sub-issues |
-| `assign_copilot_to_issue` | Assign Copilot to issue |
-
-#### Pull Requests
-| Tool | Description |
-|------|-------------|
-| `create_pull_request` | Create a pull request |
-| `list_pull_requests` | List pull requests |
-| `search_pull_requests` | Search pull requests |
-| `pull_request_read` | Read PR details |
-| `update_pull_request` | Update a PR |
-| `merge_pull_request` | Merge a PR |
-| `update_pull_request_branch` | Update PR branch |
-| `pull_request_review_write` | Write PR reviews |
-| `add_comment_to_pending_review` | Add review comments |
-| `request_copilot_review` | Request Copilot review |
-
-#### Releases
-| Tool | Description |
-|------|-------------|
-| `list_releases` | List releases |
-| `get_latest_release` | Get latest release |
-| `get_release_by_tag` | Get release by tag |
-
-#### Users & Teams
-| Tool | Description |
-|------|-------------|
-| `get_me` | Get current user info |
-| `search_users` | Search users |
-| `get_teams` | Get teams |
-| `get_team_members` | Get team members |
-
-#### Other
-| Tool | Description |
-|------|-------------|
-| `get_label` | Get label details |
-| `search_code` | Search code in repositories |
+| `create_entities` | Create new entities in the knowledge graph |
+| `add_observations` | Add observations to existing entities |
+| `create_relations` | Create relations between entities |
+| `search_nodes` | Search for nodes by query |
+| `open_nodes` | Open specific nodes by name |
+| `read_graph` | Read the entire knowledge graph |
+| `delete_entities` | Delete entities and their relations |
+| `delete_observations` | Delete specific observations from entities |
+| `delete_relations` | Delete relations from the graph |
 
 ---
 
-### cursor-ide-browser
-IDE-integrated browser for frontend development and testing.
+### user-sequential-thinking
+
+Dynamic problem-solving through structured thinking steps. Supports revision, branching, and hypothesis verification.
 
 | Tool | Description |
 |------|-------------|
-| `browser_navigate` | Navigate to a URL |
-| `browser_navigate_back` | Go back in history |
-| `browser_navigate_forward` | Go forward in history |
-| `browser_reload` | Reload the page |
-| `browser_click` | Click on elements |
-| `browser_type` | Append text to fields |
-| `browser_fill` | Clear and replace text |
-| `browser_fill_form` | Fill multiple form fields |
-| `browser_hover` | Hover over elements |
-| `browser_drag` | Drag and drop |
-| `browser_scroll` | Scroll the page |
-| `browser_select_option` | Select dropdown options |
-| `browser_press_key` | Press keyboard keys |
-| `browser_snapshot` | Get page structure/element refs |
-| `browser_take_screenshot` | Capture screenshots |
-| `browser_search` | Search within the page |
-| `browser_tabs` | Manage browser tabs |
-| `browser_resize` | Resize browser window |
-| `browser_wait_for` | Wait for conditions |
-| `browser_handle_dialog` | Handle native dialogs |
-| `browser_console_messages` | Get console messages |
-| `browser_network_requests` | Monitor network traffic |
-| `browser_lock` | Lock browser for interactions |
-| `browser_unlock` | Unlock browser when done |
-| `browser_highlight` | Highlight elements |
-| `browser_get_attribute` | Get element attributes |
-| `browser_get_bounding_box` | Get element dimensions |
-| `browser_get_input_value` | Get input field values |
-| `browser_is_visible` | Check element visibility |
-| `browser_is_enabled` | Check if element is enabled |
-| `browser_is_checked` | Check checkbox/radio state |
+| `sequentialthinking` | Break down complex problems with adaptive thinking steps |
 
 ---
 
 ## Agent Skills
 
-### create-rule
-**Description**: Create Cursor rules for persistent AI guidance.
-**Triggers**: Creating rules, adding coding standards, setting up project conventions, configuring file-specific patterns, creating `.cursor/rules/` files.
+### code-review
 
----
+**Description**: Conducts professional code reviews of branch changes and documents findings.
 
-### create-skill
-**Description**: Guide users through creating effective Agent Skills for Cursor.
-**Triggers**: Creating, writing, or authoring new skills, questions about skill structure, best practices, or SKILL.md format.
+**Triggers**: Code review requests, checking code quality, before creating pull requests
 
----
-
-### update-cursor-settings
-**Description**: Modify Cursor/VSCode user settings in settings.json.
-**Triggers**: Changing editor settings, preferences, configuration, themes, font size, tab size, format on save, auto save, keybindings.
-
----
-
-### document-dev-tools
-**Description**: Documents available MCP servers, tools, skills, and agents into DEVELOPMENTTOOLS.md.
-**Triggers**: New MCP servers/tools added, skills/agents created or modified, user requests tool documentation, setting up development environment.
+**Output**: Creates review document in `.reviews/{branch-name}-review.md`
 
 ---
 
 ### create-project
+
 **Description**: Creates new projects and features following repository structure conventions.
-**Triggers**: Creating a new project, adding a new feature, scaffolding code, initializing a new module.
+
+**Triggers**: Creating new projects, adding features, scaffolding code, initializing modules
+
+**Structure**: Source files in `src/dev/`, tests in `src/Tests/`
 
 ---
 
-### pick-and-plan
-**Description**: Picks an open GitHub issue by priority and creates an execution plan.
-**Triggers**: User wants to work on issues, pick a task, plan work, asks what to work on next.
-**Priority Order**: CONT → CRITICAL → BUG → MAINT → DOC → FEAT
-**Ignored Labels**: AIIGNORE, INPROGRESS, DELETEME, FUTUREWORK, PLANCREATED
+### document-dev-tools
+
+**Description**: Documents available MCP servers, tools, skills, and agents into DEVELOPMENTTOOLS.md.
+
+**Triggers**: MCP server changes, skill modifications, user requests for tool documentation
 
 ---
 
 ### execute-workplan
-**Description**: Executes a pending workplan by priority.
-**Triggers**: Execute a plan, work on pending task, start implementation, continue planned work.
-**Priority Order**: CONT → CRITICAL → BUG → MAINT → DOC → FEAT
-**Workflow**: Pending → Inprogress → Done → Report → Archive → Commit → PR → Close Issue
-**Interruption**: Can create CONT issue to continue work later
+
+**Description**: Executes a pending workplan from `.workplans/Pending/` by priority.
+
+**Triggers**: Starting implementation, working on pending tasks, continuing planned work
+
+**Uses**: GitHub CLI for issue management
 
 ---
 
-### code-review
-**Description**: Conducts professional code reviews and documents findings.
-**Triggers**: Review code, check changes, before PR, code quality check.
-**Output**: `.reviews/{branch-name}-review.md`
-**Severity Levels**: 🔴 Critical, 🟠 Major, 🟡 Minor, 💡 Suggestion
+### fullstack-web-dev
+
+**Description**: Professional React/Node/TypeScript web developer with .NET backend expertise.
+
+**Triggers**: Building web features, creating components, implementing APIs, frontend/fullstack tasks
+
+**Key Features**: Uses Context7 for docs, browser verification required for all UI work
 
 ---
 
 ### implement-review-feedback
-**Description**: Implements feedback from code reviews in .reviews folder.
-**Triggers**: Address review comments, fix findings, implement suggestions.
-**Priority**: Critical → Major → Minor → Suggestion (defer allowed)
-**Pairs with**: code-review skill
+
+**Description**: Implements feedback from code reviews in the `.reviews/` folder.
+
+**Triggers**: Addressing review comments, fixing findings, implementing suggested changes
+
+---
+
+### pick-and-plan
+
+**Description**: Picks an open GitHub issue by priority and creates an execution plan.
+
+**Triggers**: Selecting next task, planning work, asking what to work on
+
+**Uses**: GitHub CLI for issue listing and updates
 
 ---
 
 ### write-unit-tests
+
 **Description**: Writes comprehensive unit tests using xUnit and Moq.
-**Triggers**: Create tests, add coverage, write unit tests, test new functionality.
-**Output**: `unitTests/` project
-**Principles**: Always fix code, never cheat on tests. Find root cause of failures.
+
+**Triggers**: Creating tests, adding test coverage, testing new functionality
+
+**Principle**: Always finds root cause of failures and fixes the code, not the tests
 
 ---
 
 ## Available Agents
 
-| Agent Type | Purpose | Best For |
+| Agent Type | Purpose | Use When |
 |------------|---------|----------|
-| `generalPurpose` | Research and multi-step tasks | Complex questions, code search, multi-step workflows |
-| `explore` | Fast codebase exploration | Finding files by patterns, searching code for keywords, answering codebase questions |
-| `shell` | Command execution specialist | Git operations, running bash commands, terminal tasks |
+| `generalPurpose` | Research, search, multi-step tasks | Complex questions, searching code, not confident finding matches quickly |
+| `explore` | Fast codebase exploration | Finding files by patterns, searching for keywords, understanding codebase |
+| `shell` | Command execution specialist | Git operations, bash commands, terminal tasks |
 
 ---
 
@@ -242,7 +180,34 @@ IDE-integrated browser for frontend development and testing.
 
 | Category | Count |
 |----------|-------|
-| MCP Servers | 5 |
-| MCP Tools | 81 |
-| Agent Skills | 10 |
-| Agent Types | 3 |
+| MCP Servers | 4 |
+| MCP Tools | 43 |
+| Skills | 8 |
+
+### Common Workflows
+
+**Documentation Lookup**:
+```
+1. resolve-library-id → Get library ID
+2. query-docs → Fetch current documentation
+3. create_entities / add_observations → Store in memory
+```
+
+**Browser Testing**:
+```
+1. browser_navigate → Open page
+2. browser_lock → Lock for interaction
+3. browser_snapshot → Get page structure
+4. [interactions]
+5. browser_take_screenshot → Capture visual
+6. browser_unlock → Release
+```
+
+**Issue Workflow**:
+```
+1. gh issue list → Fetch open issues
+2. pick-and-plan → Create execution plan
+3. execute-workplan → Implement solution
+4. code-review → Review changes
+5. gh pr create → Create pull request
+```

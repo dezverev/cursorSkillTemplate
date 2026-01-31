@@ -38,15 +38,11 @@ mv .workplans/Pending/issue-{number}-*.md .workplans/Inprogress/
 
 ### Step 3: Set GitHub Issue to INPROGRESS
 
-```
-issue_write:
-  owner: {owner}
-  repo: {repo}
-  issue_number: {number}
-  labels: [...existing, "INPROGRESS"]
-```
+Use GitHub CLI to update labels:
 
-Remove `PLANCREATED` label if present.
+```bash
+gh issue edit {number} --add-label "INPROGRESS" --remove-label "PLANCREATED"
+```
 
 ### Step 4: Verify Documentation
 
@@ -71,7 +67,7 @@ query-docs → Get current documentation
 1. Ensure correct branch (create `impl/issue-{number}-{slug}` if on main)
 2. Read and follow plan steps
 3. Create/modify files in `src/dev/`
-4. Create tests in `src/test/`
+4. Create tests in `src/Tests/`
 5. Run tests to verify
 
 ### Step 6: Move to Done
@@ -103,7 +99,7 @@ Create a summary report in `.workplanReports/`:
 
 ## Files Changed
 - `src/dev/...`
-- `src/test/...`
+- `src/Tests/...`
 
 ## Tests
 - [Test results summary]
@@ -149,13 +145,10 @@ EOF
 
 ### Step 11: Set GitHub Issue to Complete
 
-```
-issue_write:
-  owner: {owner}
-  repo: {repo}
-  issue_number: {number}
-  state: "closed"
-  state_reason: "completed"
+Use GitHub CLI to close the issue:
+
+```bash
+gh issue close {number} --reason completed
 ```
 
 ---
@@ -171,13 +164,13 @@ If the issue is too large or you are interrupted:
    ```
 
 2. **Create continuation issue:**
-   ```
-   issue_write:
-     owner: {owner}
-     repo: {repo}
-     title: "CONT: {original_title} (continued from #{number})"
-     body: "Continuation of #{number}\n\n## Remaining Work\n{remaining_steps}"
-     labels: ["CONT"]
+   ```bash
+   gh issue create --title "CONT: {original_title} (continued from #{number})" \
+     --body "Continuation of #{number}
+
+## Remaining Work
+{remaining_steps}" \
+     --label "CONT"
    ```
 
 3. **Update original issue** with reference to continuation
@@ -206,7 +199,7 @@ Selected: issue-42-fix-authentication-timeout.md (P2: BUG)
 
 Executing plan...
 - Modified: src/dev/auth/session.ts
-- Created: src/test/auth/session.test.ts
+- Created: src/Tests/auth/session.test.ts
 - Tests: 5/5 passing
 
 → Moved to Done

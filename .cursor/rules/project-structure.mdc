@@ -10,7 +10,7 @@ alwaysApply: true
 ```
 src/
 ├── dev/      # Main source files (production code)
-└── test/     # Test files and test applications
+└── Tests/    # Test files and test applications
 ```
 
 ## Guidelines
@@ -23,7 +23,7 @@ Place all main application code here:
 - Configuration files
 - Build scripts
 
-### `src/test/` - Test Files
+### `src/Tests/` - Test Files
 Place all testing-related files here:
 - Unit tests
 - Integration tests
@@ -37,8 +37,8 @@ Place all testing-related files here:
 # ✅ GOOD
 src/dev/app.ts
 src/dev/utils/helpers.ts
-src/test/app.test.ts
-src/test/utils/helpers.test.ts
+src/Tests/app.test.ts
+src/Tests/utils/helpers.test.ts
 
 # ❌ BAD
 src/app.ts
@@ -49,4 +49,4 @@ tests/app.test.ts
 ## When Creating Files
 
 - New feature → `src/dev/`
-- Test for that feature → `src/test/` (mirror the path structure)
+- Test for that feature → `src/Tests/` (mirror the path structure)
