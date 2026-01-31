@@ -36,12 +36,52 @@ After installing, authenticate:
 gh auth login
 ```
 
-### 3. Clone This Repository
+### 3. Use This Template
+
+#### Option A: Fork the Repository (Recommended)
+
+1. Go to the repository on GitHub
+2. Click **Fork** in the top-right corner
+3. Select your account as the destination
+4. Clone your fork:
 
 ```bash
-git clone <repository-url>
-cd <repository-name>
+git clone https://github.com/YOUR-USERNAME/cursorSkillTest.git
+cd cursorSkillTest
 ```
+
+#### Option B: Use as GitHub Template
+
+If the repository is set up as a template:
+
+1. Click **Use this template** > **Create a new repository**
+2. Name your new repository
+3. Clone it:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/your-new-repo.git
+cd your-new-repo
+```
+
+#### Option C: Manual Setup
+
+1. Create a new repository on GitHub
+2. Clone the template and push to your repo:
+
+```bash
+# Clone the template
+git clone https://github.com/ORIGINAL-OWNER/cursorSkillTest.git my-project
+cd my-project
+
+# Remove original remote and add your own
+git remote remove origin
+git remote add origin https://github.com/YOUR-USERNAME/my-project.git
+
+# Push to your repository
+git push -u origin main
+```
+
+### 4. Open in Cursor
 
 Open the folder in Cursor:
 - **File > Open Folder** or
