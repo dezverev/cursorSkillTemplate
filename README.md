@@ -1,8 +1,165 @@
 # cursorSkillTest
 
-> **New here?** See [USER_README.md](USER_README.md) for the recommended workflow and setup instructions.
+> **New here?** See [USER_README.md](USER_README.md) for detailed MCP setup and configuration.
 
-This workspace documents the MCP servers, tools, and agent skills available in this Cursor environment.
+AI-powered issue planning and execution workflow for Cursor.
+
+---
+
+## Quick Start Guide
+
+### Prerequisites
+
+1. **GitHub CLI** - Install and authenticate:
+   ```bash
+   # Install (Windows)
+   winget install GitHub.cli
+   
+   # Install (macOS)
+   brew install gh
+   
+   # Authenticate
+   gh auth login
+   ```
+
+2. **Recommended MCP Servers** - Add to `~/.cursor/mcp.json`:
+   ```json
+   {
+     "mcpServers": {
+       "memory": {
+         "command": "npx -y @modelcontextprotocol/server-memory@latest"
+       },
+       "sequential-thinking": {
+         "command": "npx -y @modelcontextprotocol/server-sequential-thinking@latest"
+       },
+       "context7": {
+         "url": "https://mcp.context7.com/mcp",
+         "headers": { "CONTEXT7_API_KEY": "<your-key>" }
+       }
+     }
+   }
+   ```
+
+3. **Restart Cursor** after adding MCP servers
+
+---
+
+### Step-by-Step: Working on a GitHub Issue
+
+#### Step 1: Setup Labels (First Time Only)
+
+Create the required labels in your GitHub repository:
+
+```
+/generate-git-labels
+```
+
+This creates priority labels (CONT, CRITICAL, BUG, MAINT, DOC, FEAT) and workflow labels (INPROGRESS, PLANCREATED, etc.).
+
+#### Step 2: Create a GitHub Issue
+
+Go to your repository on GitHub and create an issue. Add a priority label:
+
+| Label | Priority | Use For |
+|-------|----------|---------|
+| `CRITICAL` | P1 | Urgent, blocking issues |
+| `BUG` | P2 | Bug fixes |
+| `MAINT` | P3 | Refactoring, cleanup |
+| `DOC` | P4 | Documentation updates |
+| `FEAT` | P5 | New features |
+
+**Example Issue:**
+```
+Title: Add user authentication
+Labels: FEAT
+Body: Implement JWT-based authentication for the API...
+```
+
+#### Step 3: Pick and Plan
+
+In Cursor, run:
+
+```
+/pick-and-plan
+```
+
+**What happens:**
+1. Fetches all open issues from GitHub
+2. Selects the highest priority issue (lowest P number)
+3. Creates a detailed execution plan
+4. Saves plan to `.workplans/Pending/issue-{number}-{slug}.md`
+5. Adds `PLANCREATED` label to the issue
+6. Commits the plan to a new branch
+
+#### Step 4: Execute the Plan
+
+Run:
+
+```
+/execute-workplan
+```
+
+**What happens:**
+1. Picks the highest priority pending workplan
+2. Moves it to `.workplans/Inprogress/`
+3. Labels the issue `INPROGRESS`
+4. Implements the changes in `src/dev/`
+5. Creates tests in `src/Tests/`
+6. Generates a summary report
+7. Creates a pull request
+8. Closes the issue
+
+#### Step 5: Review (Optional)
+
+Before creating a PR, you can run a code review:
+
+```
+/code-review
+```
+
+This creates a review document in `.reviews/` with findings by severity.
+
+---
+
+### Complete Workflow Diagram
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    ONE-TIME SETUP                           │
+├─────────────────────────────────────────────────────────────┤
+│  1. Install GitHub CLI (gh)                                 │
+│  2. Add MCP servers to ~/.cursor/mcp.json                   │
+│  3. Run /generate-git-labels                                │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    FOR EACH ISSUE                           │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐  │
+│  │ Create Issue │───▶│ /pick-and-   │───▶│ /execute-    │  │
+│  │ on GitHub    │    │    plan      │    │   workplan   │  │
+│  │ + add label  │    │              │    │              │  │
+│  └──────────────┘    └──────────────┘    └──────────────┘  │
+│                              │                    │         │
+│                              ▼                    ▼         │
+│                      Plan saved to        PR created,       │
+│                      .workplans/          Issue closed      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| "gh: command not found" | Install GitHub CLI and restart terminal |
+| "not logged in" | Run `gh auth login` |
+| No issues found | Check that issues exist and don't have ignore labels |
+| MCP tools not working | Run `/document-dev-tools` to sync configuration |
 
 ---
 

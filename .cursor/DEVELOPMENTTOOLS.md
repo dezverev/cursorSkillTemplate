@@ -128,6 +128,16 @@ Dynamic problem-solving through structured thinking steps. Supports revision, br
 
 ---
 
+### generate-git-labels
+
+**Description**: Creates required GitHub labels for issue tracking and workflow automation.
+
+**Triggers**: Setting up a new repository, missing labels, syncing project labels
+
+**Uses**: GitHub CLI to create labels
+
+---
+
 ### fullstack-web-dev
 
 **Description**: Professional React/Node/TypeScript web developer with .NET backend expertise.
@@ -182,7 +192,7 @@ Dynamic problem-solving through structured thinking steps. Supports revision, br
 |----------|-------|
 | MCP Servers | 4 |
 | MCP Tools | 43 |
-| Skills | 8 |
+| Skills | 9 |
 
 ### Common Workflows
 

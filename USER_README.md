@@ -2,7 +2,64 @@
 
 This repository includes AI-powered skills for automated issue planning and execution.
 
+---
+
+## Prerequisites
+
+### 1. Install Cursor
+
+Cursor is an AI-powered code editor built on VS Code.
+
+**Download:** [https://cursor.com](https://cursor.com)
+
+| Platform | Installation |
+|----------|--------------|
+| Windows | Download `.exe` installer from website |
+| macOS | Download `.dmg` or use `brew install --cask cursor` |
+| Linux | Download `.AppImage` or `.deb` from website |
+
+After installing, open Cursor and sign in to enable AI features.
+
+### 2. Install GitHub CLI
+
+The workflows use GitHub CLI (`gh`) for issue and PR management.
+
+| Platform | Installation |
+|----------|--------------|
+| Windows | `winget install GitHub.cli` |
+| macOS | `brew install gh` |
+| Linux | See [GitHub CLI docs](https://github.com/cli/cli#installation) |
+
+After installing, authenticate:
+
+```bash
+gh auth login
+```
+
+### 3. Clone This Repository
+
+```bash
+git clone <repository-url>
+cd <repository-name>
+```
+
+Open the folder in Cursor:
+- **File > Open Folder** or
+- From terminal: `cursor .`
+
+---
+
 ## Workflow
+
+### 0. Setup Labels (First Time Only)
+
+Run this command to create the required labels in your GitHub repository:
+
+```
+/generate-git-labels
+```
+
+This creates priority labels (CONT, CRITICAL, BUG, MAINT, DOC, FEAT) and workflow labels (INPROGRESS, PLANCREATED, etc.).
 
 ### 1. Create a GitHub Issue
 
@@ -103,6 +160,7 @@ This will scan your current MCP configuration and update `.cursor/DEVELOPMENTTOO
 
 | Skill | Command | Description |
 |-------|---------|-------------|
+| Generate Labels | `/generate-git-labels` | Create required GitHub labels |
 | Pick and Plan | `/pick-and-plan` | Select GitHub issue and create execution plan |
 | Execute Workplan | `/execute-workplan` | Implement a pending workplan |
 | Code Review | `/code-review` | Review branch changes before PR |
