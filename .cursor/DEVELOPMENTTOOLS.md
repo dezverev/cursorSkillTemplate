@@ -187,6 +187,47 @@ IDE-integrated browser for frontend development and testing.
 
 ---
 
+### pick-and-plan
+**Description**: Picks an open GitHub issue by priority and creates an execution plan.
+**Triggers**: User wants to work on issues, pick a task, plan work, asks what to work on next.
+**Priority Order**: CONT → CRITICAL → BUG → MAINT → DOC → FEAT
+**Ignored Labels**: AIIGNORE, INPROGRESS, DELETEME, FUTUREWORK, PLANCREATED
+
+---
+
+### execute-workplan
+**Description**: Executes a pending workplan by priority.
+**Triggers**: Execute a plan, work on pending task, start implementation, continue planned work.
+**Priority Order**: CONT → CRITICAL → BUG → MAINT → DOC → FEAT
+**Workflow**: Pending → Inprogress → Done → Report → Archive → Commit → PR → Close Issue
+**Interruption**: Can create CONT issue to continue work later
+
+---
+
+### code-review
+**Description**: Conducts professional code reviews and documents findings.
+**Triggers**: Review code, check changes, before PR, code quality check.
+**Output**: `.reviews/{branch-name}-review.md`
+**Severity Levels**: 🔴 Critical, 🟠 Major, 🟡 Minor, 💡 Suggestion
+
+---
+
+### implement-review-feedback
+**Description**: Implements feedback from code reviews in .reviews folder.
+**Triggers**: Address review comments, fix findings, implement suggestions.
+**Priority**: Critical → Major → Minor → Suggestion (defer allowed)
+**Pairs with**: code-review skill
+
+---
+
+### write-unit-tests
+**Description**: Writes comprehensive unit tests using xUnit and Moq.
+**Triggers**: Create tests, add coverage, write unit tests, test new functionality.
+**Output**: `unitTests/` project
+**Principles**: Always fix code, never cheat on tests. Find root cause of failures.
+
+---
+
 ## Available Agents
 
 | Agent Type | Purpose | Best For |
@@ -203,5 +244,5 @@ IDE-integrated browser for frontend development and testing.
 |----------|-------|
 | MCP Servers | 5 |
 | MCP Tools | 81 |
-| Agent Skills | 5 |
+| Agent Skills | 10 |
 | Agent Types | 3 |
